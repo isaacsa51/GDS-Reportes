@@ -1,35 +1,19 @@
-import React, { useContext, useState } from 'react';
-import {
-	View,
-	Text,
-	TouchableOpacity,
-	Image,
-	Platform,
-	StyleSheet,
-	ScrollView,
-	Button,
-	TextInput,
-	Dimensions,
-} from 'react-native';
+import React from 'react';
+import { View, Text, StyleSheet, TextInput, Button, ScrollView, TouchableOpacity } from 'react-native';
+import { createStackNavigator } from '@react-navigation/stack';
 import { AntDesign, FontAwesome } from 'react-native-vector-icons';
 
-import { AuthContext } from '../utils';
+import { AuthContext } from '../../components/enviroment';
 
-export function SignInScreen({ navigation }) {
+export default function Profile({ navigation }) {
+	const { signIn } = React.useContext(AuthContext);
+
 	const [email, setEmail] = React.useState('');
 	const [password, setPassword] = React.useState('');
 
-	const { signIn } = React.useContext(AuthContext);
-	const { login, googleLogin, fbLogin } = useContext(AuthContext);
-
+	// const { signIn } = React.useContext(AuthContext);
 	return (
-		// <View>
-		// 	<TextInput placeholder='Username' value={username} onChangeText={setUsername} />
-		// 	<TextInput placeholder='Password' value={password} onChangeText={setPassword} secureTextEntry />
-		// 	<Button title='Sign in' onPress={() => signIn({ username, password })} />
-		// </View>
-
-		<ScrollView contentContainerStyle={styles.container}>
+		<ScrollView>
 			<Text style={styles.text}>Bienvenido</Text>
 
 			{/* Email form */}
@@ -73,34 +57,18 @@ export function SignInScreen({ navigation }) {
 				<Text style={styles.navButtonText}>Olvidaste tu contraseña?</Text>
 			</TouchableOpacity>
 
-			{/* Social logins */}
-			<View>
-				{/* Facebook */}
-				<TouchableOpacity style={[styles.buttonContainerSocial, { backgroundColor: '#e6eaf4' }]}>
-					<View style={styles.iconWrapper}>
-						<FontAwesome name="facebook" style={styles.icon} size={22} color="#4867aa" />
-					</View>
-					<View style={styles.btnTxtWrapper}>
-						<Text style={[styles.buttonText, { color: '#4867aa' }]}>Iniciar sesión con Facebook</Text>
-					</View>
-				</TouchableOpacity>
-
-				{/* Google */}
-				<TouchableOpacity style={[styles.buttonContainerSocial, { backgroundColor: '#f5e7ea' }]}>
-					<View style={styles.iconWrapper}>
-						<FontAwesome name="google" style={styles.icon} size={22} color="#de4d41" />
-					</View>
-					<View style={styles.btnTxtWrapper}>
-						<Text style={[styles.buttonText, { color: '#de4d41' }]}>Iniciar sesión con Facebook</Text>
-					</View>
-				</TouchableOpacity>
-			</View>
-
 			{/* Password forgotten */}
 			<TouchableOpacity style={styles.forgotButton}>
 				<Text style={styles.navButtonText}>No tienes una cuenta? Registrate!</Text>
 			</TouchableOpacity>
 		</ScrollView>
+		// <View style={styles.content}>
+		// 	<Text>REGISTRO</Text>
+
+		// 	<TextInput style={{ height: 40, borderColor: 'gray', borderWidth: 1 }} />
+
+		// 	<Button title="Registrarme" onPress={() => signIn()} />
+		// </View>
 	);
 }
 
