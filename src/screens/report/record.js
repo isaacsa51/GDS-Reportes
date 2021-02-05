@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { Camera } from 'expo-camera';
 import * as Permissions from 'expo-permissions';
 import React, { Component, useState, useEffect, useRef } from 'react';
-import { Ionicons } from '@expo/vector-icons';
+import { Ionicons, FontAwesome5 } from '@expo/vector-icons';
 import {
 	SafeAreaView,
 	StyleSheet,
@@ -23,6 +23,7 @@ import categoryData from '../../../data/categories';
 
 const RecordReport = ({ navigation }) => {
 	const camRef = useRef(null);
+	const [value, setValue] = React.useState('');
 	const [type, setType] = useState(Camera.Constants.Type.back);
 	const [hasPermission, setHaspermission] = useState(null);
 	const [recording, setRecording] = useState(false);
@@ -207,7 +208,43 @@ const RecordReport = ({ navigation }) => {
 										underlineColorAndroid={'transparent'}
 									/>
 
-									<Text>Dropdown para seleccionar categorias aquí jeje xd...</Text>
+									<DropDownPicker
+										items={[
+											{ label: 'angellist', value: 'angellist' },
+											{ label: 'codepen', value: 'codepen' },
+											{ label: 'envelope', value: 'envelope' },
+											{ label: 'etsy', value: 'etsy' },
+											{ label: 'facebook', value: 'faceboo' },
+											{ label: 'foursquare', value: 'foursquare' },
+											{ label: 'github-alt', value: 'github-alt' },
+											{ label: 'github', value: 'github' },
+											{ label: 'gitlab', value: 'gitlab' },
+											{ label: 'instagram', value: 'instagrama' },
+											{
+												label: 'Selecciona una empresa',
+												value: 'placeholder',
+												selected: true,
+												icon: () => <FontAwesome5 name="search" size={18} color="#000" />,
+												hidden: true,
+											},
+										]}
+										containerStyle={{ height: 40, alignSelf: 'stretch' }}
+										style={{ backgroundColor: '#fafafa', alignSelf: 'center' }}
+										itemStyle={{
+											justifyContent: 'flex-start',
+										}}
+										labelStyle={{
+											textAlign: 'center',
+										}}
+										selectedLabelStyle={{ color: '#000000' }}
+										dropDownStyle={{ backgroundColor: '#fafafa' }}
+										dropDownMaxHeight={400}
+										onChangeItem={(item) => setValue(item.value)}
+										searchable={true}
+										searchablePlaceholder="Busca una ciudad"
+										searchablePlaceholderTextColor="gray"
+										searchableError={() => <Text>No existe una empresa con ese nombre</Text>}
+									/>
 								</View>
 
 								{/* View to organize the buttons */}
@@ -228,12 +265,9 @@ const RecordReport = ({ navigation }) => {
 											onPress={() => {
 												setAbrirModal(false);
 												// Cambiar de pantalla y mandar la uri del video capturado después de aceptar
-												navigation.navigate('EditReport', { uriVideoCapturado: videoCapturado });
+												// navigation.navigate('EditReport', { uriVideoCapturado: videoCapturado });
 
-												/*NavigationPreloadManager.navigate('Video reporte', {
-        											videoUri: video,
-        											coordenadas: 'poner latitud y longitud...'
-      											});*/
+												alert('Enviar video al endpoint back');
 											}}
 										>
 											<Text style={{ color: 'white' }}>Aceptar</Text>

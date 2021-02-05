@@ -38,7 +38,7 @@
     "react-native": "https://github.com/expo/react-native/archive/sdk-39.0.4.tar.gz",
     "react-native-bouncy-checkbox": "^1.0.8",
     "react-native-drag-resize": "^1.0.2",
-    "react-native-dropdown-picker": "^3.7.1",
+    "react-native-dropdown-picker": "^3.8.0",
     "react-native-gesture-handler": "^1.9.0",
     "react-native-maps": "0.27.1",
     "react-native-mapview": "^0.0.1",

@@ -8,7 +8,6 @@ import RootStackScreen from '../navigation/login';
 import HomeBottomTab from '../navigation/homeBottomTabNavigator';
 import Search from '../screens/search';
 import RecordReport from '../screens/report/record';
-import EditReport from '../screens/report/edit';
 import Map from '../screens/map';
 import PostLocation from '../components/post/postLocation';
 import Profile from '../screens/profile';
@@ -61,7 +60,6 @@ const RootNavigation = () => {
 						<Stack.Screen name="Inicio" component={HomeBottomTab} />
 						<Stack.Screen name="Buscar" component={Search} />
 						<Stack.Screen name="Reportar" component={RecordReport} />
-						<Stack.Screen name="EditReport" component={EditReport} />
 						<Stack.Screen name="Mapa" component={Map} />
 						<Stack.Screen name="PostLocation" component={PostLocation} />
 						<Stack.Screen name="Perfil" component={Profile} />

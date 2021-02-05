@@ -14,53 +14,55 @@ export default function Profile({ navigation }) {
 	// const { signIn } = React.useContext(AuthContext);
 	return (
 		<ScrollView>
-			<Text style={styles.text}>Bienvenido</Text>
+			<View style={styles.container}>
+				<Text style={styles.text}>Bienvenido</Text>
 
-			{/* Email form */}
-			<View style={styles.inputContainer}>
-				<View style={styles.iconStyle}>
-					<AntDesign name="mail" size={25} color="#666" />
+				{/* Email form */}
+				<View style={styles.inputContainer}>
+					<View style={styles.iconStyle}>
+						<AntDesign name="mail" size={25} color="#666" />
+					</View>
+					<TextInput
+						value={email}
+						onChangeText={setEmail}
+						style={styles.input}
+						numberOfLines={1}
+						placeholder="Email"
+						placeholderTextColor="#666"
+					/>
 				</View>
-				<TextInput
-					value={email}
-					onChangeText={setEmail}
-					style={styles.input}
-					numberOfLines={1}
-					placeholder="Email"
-					placeholderTextColor="#666"
-				/>
-			</View>
 
-			{/* Password form */}
-			<View style={styles.inputContainer}>
-				<View style={styles.iconStyle}>
-					<AntDesign name="lock1" size={25} color="#666" />
+				{/* Password form */}
+				<View style={styles.inputContainer}>
+					<View style={styles.iconStyle}>
+						<AntDesign name="lock1" size={25} color="#666" />
+					</View>
+					<TextInput
+						value={password}
+						onChangeText={setPassword}
+						secureTextEntry
+						style={styles.input}
+						numberOfLines={1}
+						placeholder="Constraseña"
+						placeholderTextColor="#666"
+					/>
 				</View>
-				<TextInput
-					value={password}
-					onChangeText={setPassword}
-					secureTextEntry
-					style={styles.input}
-					numberOfLines={1}
-					placeholder="Constraseña"
-					placeholderTextColor="#666"
-				/>
+
+				{/* Forgot password button */}
+				<TouchableOpacity style={styles.forgotButton} onPress={() => {}}>
+					<Text style={styles.navButtonText}>Olvidaste tu contraseña?</Text>
+				</TouchableOpacity>
+
+				{/* Login button */}
+				<TouchableOpacity style={styles.buttonContainer} onPress={() => signIn({ email, password })}>
+					<Text style={styles.buttonText}>Entrar</Text>
+				</TouchableOpacity>
+
+				{/* Create account */}
+				<TouchableOpacity style={styles.forgotButton}>
+					<Text style={styles.navButtonText}>No tienes una cuenta? Registrate!</Text>
+				</TouchableOpacity>
 			</View>
-
-			{/* Login button */}
-			<TouchableOpacity style={styles.buttonContainer} onPress={() => signIn({ email, password })}>
-				<Text style={styles.buttonText}>Entrar</Text>
-			</TouchableOpacity>
-
-			{/* Forgot password button */}
-			<TouchableOpacity style={styles.forgotButton} onPress={() => {}}>
-				<Text style={styles.navButtonText}>Olvidaste tu contraseña?</Text>
-			</TouchableOpacity>
-
-			{/* Password forgotten */}
-			<TouchableOpacity style={styles.forgotButton}>
-				<Text style={styles.navButtonText}>No tienes una cuenta? Registrate!</Text>
-			</TouchableOpacity>
 		</ScrollView>
 		// <View style={styles.content}>
 		// 	<Text>REGISTRO</Text>
@@ -93,7 +95,7 @@ const styles = StyleSheet.create({
 		marginTop: 15,
 	},
 	forgotButton: {
-		marginVertical: 35,
+		marginVertical: 10,
 	},
 	navButtonText: {
 		fontSize: 18,
@@ -140,7 +142,7 @@ const styles = StyleSheet.create({
 		borderWidth: 1,
 	},
 	buttonContainer: {
-		marginTop: 10,
+		marginTop: 50,
 		width: '100%',
 		height: 800 / 15,
 		backgroundColor: '#2c76cc',
