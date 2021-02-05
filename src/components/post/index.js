@@ -9,11 +9,13 @@ const Post = (props) => {
 	const [post, setPost] = useState(props.post);
 	const [isLiked, setIsLiked] = useState(false);
 	const [paused, setPaused] = useState(false);
+	const [muted, setMuted] = useState(false);
 
 	const navigation = useNavigation();
 
 	const handlePlayAndPause = () => {
 		setPaused(!paused);
+		setMuted(!muted);
 	};
 
 	const onLikePress = () => {
@@ -33,7 +35,7 @@ const Post = (props) => {
 					style={styles.video}
 					rate={1.0}
 					volume={1.0}
-					isMuted={false}
+					isMuted={!muted}
 					resizeMode="cover"
 					shouldPlay={!paused}
 					isLooping
@@ -45,10 +47,10 @@ const Post = (props) => {
 					{/* Side component */}
 					<Image style={styles.profilePicture} source={{ uri: post.user.profilePictureUri }} />
 
-					<View style={styles.iconsContainer}>
+					<TouchableOpacity style={styles.iconsContainer} onPress={() => navigation.navigate('ReportComments')}>
 						<AntDesign name={'message1'} size={42} color={'white'} />
 						<Text style={styles.sideStats}>{post.comments}</Text>
-					</View>
+					</TouchableOpacity>
 
 					<TouchableOpacity style={styles.iconsContainer} onPress={onLikePress}>
 						<AntDesign name={isLiked ? 'heart' : 'hearto'} size={42} color={isLiked ? '#d32f2f' : 'white'} />

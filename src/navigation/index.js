@@ -12,6 +12,7 @@ import Map from '../screens/map';
 import PostLocation from '../components/post/postLocation';
 import Profile from '../screens/profile';
 import MyReports from '../screens/profile/myReports';
+import ReportComments from '../components/post/comments';
 import { AuthContext } from '../components/enviroment/';
 
 const Stack = createStackNavigator();
@@ -64,6 +65,17 @@ const RootNavigation = () => {
 						<Stack.Screen name="PostLocation" component={PostLocation} />
 						<Stack.Screen name="Perfil" component={Profile} />
 						<Stack.Screen name="MyReports" component={MyReports} />
+						<Stack.Screen
+							name="ReportComments"
+							component={ReportComments}
+							options={{
+								title: 'Comentarios del reporte',
+								headerTintColor: '#000',
+								headerTitleStyle: {
+									fontWeight: 'bold',
+								},
+							}}
+						/>
 					</Stack.Navigator>
 				) : (
 					<RootStackScreen />

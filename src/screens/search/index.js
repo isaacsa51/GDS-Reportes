@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-export default function Profile() {
+export default function SearchCategories() {
 	return (
 		<View style={styles.content}>
 			<Text>Buscando categorías...</Text>
