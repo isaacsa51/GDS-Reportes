@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TextInput, FlatList, Image } from 'react-native';
+import { View, Text, StyleSheet, TextInput, FlatList, Image, TouchableOpacity } from 'react-native';
+import { Feather } from 'react-native-vector-icons';
 
 import commentsData from '../../../data/comments';
 
@@ -45,11 +46,34 @@ export default function ReportComments() {
 				showsVerticalScrollIndicator={false}
 			/>
 
-			<TextInput
-				style={styles.commentInput}
-				onChangeText={(commentValue) => setCommentValue(commentValue)}
-				placeholder="Ingrese su comentario"
-			/>
+			{/* TextInput form */}
+			<View style={styles.commentWrapper}>
+				<View>
+					<TextInput
+						style={styles.commentInput}
+						onChangeText={(commentValue) => setCommentValue(commentValue)}
+						placeholder="Ingrese su comentario..."
+					/>
+				</View>
+				<TouchableOpacity style={styles.commentButton} underlayColor="transparent">
+					<View>
+						<Feather name="send" size={22} color="#000" />
+					</View>
+				</TouchableOpacity>
+			</View>
+
+			{/* <View style={styles.commentInput}>
+				<View style={styles.commentWrapper}>
+					<TextInput
+						style={styles.commentForm}
+						onChangeText={(commentValue) => setCommentValue(commentValue)}
+						placeholder="Ingrese su comentario..."
+					/>
+					<TouchableOpacity style={styles.commentButton}>
+						<Feather name="send" size={24} />
+					</TouchableOpacity>
+				</View>
+			</View> */}
 		</View>
 	);
 }
@@ -119,11 +143,9 @@ const styles = StyleSheet.create({
 		marginTop: 3,
 		fontSize: 14,
 	},
-	commentInput: {
+	commentWrapper: {
+		flexDirection: 'row',
 		backgroundColor: '#fff',
-		height: 40,
-		justifyContent: 'flex-end',
-		padding: 12,
 		borderBottomWidth: 0,
 		borderBottomColor: '#ebecf4',
 		shadowColor: '#454d65',
@@ -131,5 +153,22 @@ const styles = StyleSheet.create({
 		shadowRadius: 8,
 		shadowOpacity: 0.1,
 		zIndex: 10,
+		justifyContent: 'space-between',
+		paddingRight: 20,
+		paddingLeft: 20,
+	},
+	commentInput: {
+		height: 40,
+		justifyContent: 'flex-end',
+		padding: 12,
+	},
+
+	commentForm: {
+		height: 40,
+	},
+	commentButton: {
+		alignItems: 'center',
+		justifyContent: 'center',
+		flexDirection: 'row-reverse',
 	},
 });
