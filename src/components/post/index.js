@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, Image, Dimensions, TouchableWithoutFeedback, To
 import { Video } from 'expo-av';
 import { useNavigation } from '@react-navigation/native';
 
-import { AntDesign, SimpleLineIcons } from '@expo/vector-icons';
+import { AntDesign, SimpleLineIcons, Ionicons } from '@expo/vector-icons';
 
 const Post = (props) => {
 	const [post, setPost] = useState(props.post);
@@ -73,7 +73,7 @@ const Post = (props) => {
 					<Text style={styles.descPost}>{post.description}</Text>
 
 					<View style={styles.btmCategories}>
-						<AntDesign name={'tagso'} size={24} color="white" />
+						<Ionicons name={'md-business'} size={22} color="white" />
 						<Text style={styles.categoria}>{post.categories}</Text>
 					</View>
 				</View>

@@ -19,20 +19,6 @@ const Home = ({ navigation }) => {
 				snapToAlignment={'start'}
 				decelerationRate={'fast'}
 			/>
-
-			{/* Header */}
-			<View style={styles.header}>
-				<TouchableOpacity
-					onPress={() => {
-						navigation.navigate('MyReports');
-					}}
-				>
-					<Text style={styles.text}>Mis Reportes</Text>
-				</TouchableOpacity>
-
-				<Fontisto style={styles.rotate} name="minus-a" color="#fff" size={24} />
-				<Text style={styles.text}>General</Text>
-			</View>
 		</View>
 	);
 };

@@ -1,6 +1,4 @@
 node_modules/**/*
-.expo/*
-.expo-shared/*
 .idea/*
 .idea/
 .vscode/

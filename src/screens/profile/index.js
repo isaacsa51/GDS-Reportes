@@ -15,110 +15,108 @@ export default function Profile() {
 
 	return (
 		<SafeAreaView style={styles.container}>
-			<ScrollView showsVerticalScrollIndicator={false}>
-				<View style={styles.titleBar}>
-					<Ionicons name="ios-arrow-back" size={24} color="#52575D"></Ionicons>
-					<Ionicons name="md-more" size={24} color="#52575D"></Ionicons>
+			<View style={styles.titleBar}>
+				<Ionicons name="md-more" size={24} color="#52575D"></Ionicons>
+			</View>
+
+			<View style={{ alignSelf: 'center' }}>
+				<View style={styles.profileImage}>
+					<Image
+						source={{ uri: 'https://www.thepassivevoice.com/wp-content/uploads/2020/05/a1-3-640x640.jpg' }}
+						style={styles.image}
+						resizeMode="cover"
+					></Image>
 				</View>
+			</View>
 
-				<View style={{ alignSelf: 'center' }}>
-					<View style={styles.profileImage}>
-						<Image
-							source={{ uri: 'https://www.thepassivevoice.com/wp-content/uploads/2020/05/a1-3-640x640.jpg' }}
-							style={styles.image}
-							resizeMode="cover"
-						></Image>
-					</View>
+			<View style={styles.infoContainer}>
+				<Text style={[styles.text, { fontWeight: '600', fontSize: 36 }]}>usuario</Text>
+				<Text style={[styles.text, { fontWeight: '200', fontSize: 28 }]}>ciudad, estado</Text>
+			</View>
+
+			<View style={styles.statsContainer}>
+				<View style={styles.statsBox}>
+					<Text style={[styles.text, { fontSize: 24 }]}>483</Text>
+					<Text style={[styles.text, styles.subText]}>Reportes</Text>
 				</View>
-
-				<View style={styles.infoContainer}>
-					<Text style={[styles.text, { fontWeight: '600', fontSize: 36 }]}>usuario</Text>
-					<Text style={[styles.text, { fontWeight: '200', fontSize: 28 }]}>ciudad, estado</Text>
+				<View style={[styles.statsBox, { borderColor: '#DFD8C8', borderLeftWidth: 1, borderRightWidth: 1 }]}>
+					<Text style={[styles.text, { fontSize: 24 }]}>45,844</Text>
+					<Text style={[styles.text, styles.subText]}>Likes</Text>
 				</View>
-
-				<View style={styles.statsContainer}>
-					<View style={styles.statsBox}>
-						<Text style={[styles.text, { fontSize: 24 }]}>483</Text>
-						<Text style={[styles.text, styles.subText]}>Reportes</Text>
-					</View>
-					<View style={[styles.statsBox, { borderColor: '#DFD8C8', borderLeftWidth: 1, borderRightWidth: 1 }]}>
-						<Text style={[styles.text, { fontSize: 24 }]}>45,844</Text>
-						<Text style={[styles.text, styles.subText]}>Likes</Text>
-					</View>
-					<View style={styles.statsBox}>
-						<Text style={[styles.text, { fontSize: 24 }]}>302</Text>
-						<Text style={[styles.text, styles.subText]}>Comentarios</Text>
-					</View>
+				<View style={styles.statsBox}>
+					<Text style={[styles.text, { fontSize: 24 }]}>302</Text>
+					<Text style={[styles.text, styles.subText]}>Comentarios</Text>
 				</View>
+			</View>
 
-				<View style={{ flex: 1 }}>
-					<View
-						styles={{ flexDirection: 'row', justifyContent: 'space-around', borderTopWidth: 1, borderTopColor: '#ccc' }}
-					>
-						<Button
-							transparent
-							title="Reportes subidos"
-							active={activeIndex === 0}
-							style={[activeIndex === 0 ? {} : { color: Colors.gray }]}
-							onPress={() => tabClicked(0)}
-						></Button>
+			<View style={styles.buttonsContainer}>
+				<Text
+					active={activeIndex === 0}
+					style={[activeIndex === 0 ? styles.activiyButtonsActive : styles.activityButtons]}
+					onPress={() => tabClicked(0)}
+				>
+					Reportes Subidos
+				</Text>
 
-						<Button
-							transparent
-							title="Comentarios hechos"
-							active={activeIndex === 1}
-							style={[activeIndex === 1 ? {} : { color: Colors.gray }]}
-							onPress={() => tabClicked(1)}
-						></Button>
-					</View>
+				<Text
+					active={activeIndex === 1}
+					style={[activeIndex === 1 ? styles.activiyButtonsActive : styles.activityButtons]}
+					onPress={() => tabClicked(1)}
+				>
+					Comentarios hechos
+				</Text>
+			</View>
 
-					{activeIndex === 0 && (
-						<View style={styles.postContainer}>
-							<View style={styles.box}>
-								<FlatList
-									data={postsData}
-									renderItem={({ item }) => {
-										<View style={styles.inner}>
-											<Post post={item} />
-										</View>;
-									}}
-									showsVerticalScrollIndicator={false}
-								/>
-							</View>
+			{/* Secciones de los botones */}
+			{activeIndex === 0 && (
+				<ScrollView>
+					<View style={styles.postContainer}>
+						<View style={styles.box}>
+							<FlatList
+								data={postsData}
+								renderItem={({ item }) => {
+									<View style={styles.inner}>
+										<Post post={item} />
+									</View>;
+								}}
+								showsVerticalScrollIndicator={false}
+							/>
+						</View>
 
-							<View style={styles.box}>
-								<View style={styles.inner}>
-									<Text>Post</Text>
-								</View>
-							</View>
-
-							<View style={styles.box}>
-								<View style={styles.inner}>
-									<Text>Post</Text>
-								</View>
-							</View>
-
-							<View style={styles.box}>
-								<View style={styles.inner}>
-									<Text>Post</Text>
-								</View>
-							</View>
-
-							<View style={styles.box}>
-								<View style={styles.inner}>
-									<Text>Post</Text>
-								</View>
+						<View style={styles.box}>
+							<View style={styles.inner}>
+								<Text>Post</Text>
 							</View>
 						</View>
-					)}
 
-					{activeIndex === 1 && (
-						<View style={styles.postContainer}>
-							<Text>Otra sección</Text>
+						<View style={styles.box}>
+							<View style={styles.inner}>
+								<Text>Post</Text>
+							</View>
 						</View>
-					)}
+
+						<View style={styles.box}>
+							<View style={styles.inner}>
+								<Text>Post</Text>
+							</View>
+						</View>
+
+						<View style={styles.box}>
+							<View style={styles.inner}>
+								<Text>Post</Text>
+							</View>
+						</View>
+					</View>
+				</ScrollView>
+			)}
+
+			{activeIndex === 1 && (
+				<View style={styles.postContainer}>
+					<ScrollView>
+						<Text>Otra sección</Text>
+					</ScrollView>
 				</View>
-			</ScrollView>
+			)}
 		</SafeAreaView>
 	);
 }
@@ -139,7 +137,7 @@ const styles = StyleSheet.create({
 	},
 	titleBar: {
 		flexDirection: 'row',
-		justifyContent: 'space-between',
+		alignSelf: 'flex-end',
 		marginTop: 24,
 		marginHorizontal: 16,
 	},
@@ -169,29 +167,7 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		flex: 1,
 	},
-	mediaImageContainer: {
-		width: 180,
-		height: 200,
-		borderRadius: 12,
-		overflow: 'hidden',
-		marginHorizontal: 10,
-	},
-	mediaCount: {
-		backgroundColor: '#41444B',
-		position: 'absolute',
-		top: '50%',
-		marginTop: -50,
-		marginLeft: 30,
-		width: 100,
-		height: 100,
-		alignItems: 'center',
-		justifyContent: 'center',
-		borderRadius: 12,
-		shadowColor: 'rgba(0, 0, 0, 0.38)',
-		shadowOffset: { width: 0, height: 10 },
-		shadowRadius: 20,
-		shadowOpacity: 1,
-	},
+
 	recent: {
 		marginLeft: 78,
 		marginTop: 32,
@@ -203,14 +179,22 @@ const styles = StyleSheet.create({
 		alignItems: 'flex-start',
 		marginBottom: 16,
 	},
-	activityIndicator: {
-		backgroundColor: '#CABFAB',
-		padding: 4,
-		height: 12,
-		width: 12,
-		borderRadius: 6,
-		marginTop: 3,
-		marginRight: 20,
+	buttonsContainer: {
+		flexDirection: 'row',
+		justifyContent: 'space-between',
+		margin: 20,
+	},
+	activityButtons: {
+		fontSize: 16,
+		color: '#AEB5BC',
+		textTransform: 'uppercase',
+		fontWeight: '500',
+	},
+	activiyButtonsActive: {
+		fontSize: 16,
+		color: '#3b7bbf',
+		textTransform: 'uppercase',
+		fontWeight: '500',
 	},
 	postContainer: {
 		width: '100%',
@@ -226,7 +210,7 @@ const styles = StyleSheet.create({
 	},
 	inner: {
 		flex: 1,
-		backgroundColor: '#eee',
+		backgroundColor: '#ccc',
 		alignItems: 'center',
 		justifyContent: 'center',
 	},
